@@ -3,17 +3,21 @@
 Everything will be written in LaTeX. You will soon come to appreciate this fact.
 
 #### Quick Facts
-  * LaTeX files are given the `.tex` file extension
-  * Use 2 spaces for indentation
-  * Guide to LaTeX [tables][latex-tables]
-  * [LaTeX quick start][latex-quick-start]
+  * LaTeX files are given the `.tex` file extension.
+  * Use 2 spaces for indentation.
+  * Lines should never be longer than 80 characters.
+  * Guide to LaTeX [tables][latex-tables], but usually an
+    [automatic table generator][table-generator] is best.
+  * LaTeX [quick start][latex-quick-start].
 
 #### Sample
 ```
 % This is how comments are written
+% There are other types of document classes. 'article' is but one type.
 \documentclass{article}
 
-\begin{document}
+% For purposes of indentation, pretend this isn't here.
+\begin{document}        
 
 \section{This is a Numbered Section}
   You can put text here.
@@ -56,7 +60,6 @@ Everything will be written in LaTeX. You will soon come to appreciate this fact.
       \end{tabular}
     \end{table}
 
-
 \end{document}
 ```
 
@@ -64,3 +67,4 @@ Everything will be written in LaTeX. You will soon come to appreciate this fact.
 <!-- Keep alphabetized, please. -->
 [latex-quick-start]: https://www.latex-tutorial.com/tutorials/quick-start/
 [latex-tables]: https://en.wikibooks.org/wiki/LaTeX/Tables
+[table-generator]: http://www.tablesgenerator.com
