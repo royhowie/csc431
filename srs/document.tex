@@ -2,6 +2,7 @@
 
 % Packages go here.
 \usepackage{newclude}
+\usepackage{parskip}
 % \usepackage{titling}
 
 % Macros, new commands, etc. go here.
@@ -35,34 +36,15 @@
 \clearpage
 
 \section{System Requirements}
-  \subsection{Functional Requirements}
-
-  \subsection{Non-Functional Requirements}
+  \include*{system-requirements/main}
 
 \section{System Constraints}
-  \subsection{Tool Constraints}
-
-  \subsection{Language Constraints}
-
-  \subsection{Platform Constraints}
-
-  \subsection{Hardware Constraints}
-
-  \subsection{Network Constraints}
-
-  \subsection{Deployment Constraints}
-
-  \subsection{Transition \& Support Constraints}
-
-  \subsection{Budget \& Schedule Constraints}
-
-  \subsection{Miscellaneous Constraints}
+  \include*{system-constraints/main}
 
 \section{Requirements Modeling}
+  \include*{requirements-modeling/main}
 
 \section{Evolutionary Requirements}
-  \subsection{Functional Requirements}
-
-  \subsection{Non-Functional Requirements}
+  \include*{evolutionary-requirements/main}
 
 \end{document}
