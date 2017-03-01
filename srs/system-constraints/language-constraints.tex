@@ -1,1 +1,65 @@
-% content here
+\subsubsection{Web Application Front and Back Ends}
+  \label{system-constraints/language/web-app}
+  The front-facing UI will be written using the open-source Meteor platform on
+  the Node.js runtime, as the project must be browser-based. Therefore,
+  JavaScript is an absolute must and cannot be avoided.
+
+  \textbf{Relevant Links:}
+  \begin{itemize}
+    \item \url{https://nodejs.org/en/}
+    \item \url{https://www.meteor.com}
+    \item \url{https://facebook.github.io/react/}
+  \end{itemize}
+
+  \begin{table}[h!]
+    \caption{Web Application Constraints}
+    \label{system-constraints/langauge/web-application-table}
+    \begin{tabularx}{\textwidth}{|l|X|}
+      \hline
+      Title       & Web Application Constraints. \\ \hline
+      Description & Language in which the front-facing web application will be
+                    written. \\ \hline
+      Priority    & Necessary: 0. \\ \hline
+    \end{tabularx}
+  \end{table}
+
+\subsubsection{Back End Image Processing}
+  Besides the back end associated with Meteor, as mentioned in Section
+  \ref{system-constraints/language/web-app}, the application will require a
+  back end to process uploaded images and data so as to make said information
+  available to the web application. The languages in which this may be
+  accomplished have no constraints and may evolve---such as in the form of a
+  modular system---as the project progresses.
+
+  \begin{table}[h!]
+    \caption{Back End Image Processing Constraints}
+    \label{system-constraints/langauge/back-end-processing-table}
+    \begin{tabularx}{\textwidth}{|l|X|}
+      \hline
+      Title       & Back End Image Processing Constraints. \\ \hline
+      Description & Language in which back-end image processing programs must be
+                    written. \\ \hline
+      Priority    & Low: 5. \\ \hline
+    \end{tabularx}
+  \end{table}
+
+\subsubsection{Database Queries}
+  MongoDB is effectively by Meteor. It is possible to use another type of
+  database via an object relational mapping (ORM) like facebook's GraphQL or to
+  hook it up with another version of noSQL, but \textit{not} recommended.
+
+  \textbf{Relevant Links:}
+  \begin{itemize}
+    \item \url{https://code.facebook.com/projects/250682645321805/graphql/}
+  \end{itemize}
+
+  \begin{table}[h!]
+    \caption{Database Query Constraints}
+    \label{system-constraints/langauge/database-table}
+    \begin{tabularx}{\textwidth}{|l|X|}
+      \hline
+      Title       & Database Query Constraints. \\ \hline
+      Description & Language in which database queries must be written. \\\hline
+      Priority    & Necessary: 0. \\ \hline
+    \end{tabularx}
+  \end{table}
