@@ -27,7 +27,7 @@ Everything will be written in LaTeX. You will soon come to appreciate this fact.
       Does it go deeper? Not really. But this will work for us.
 
   \subsection{Subsection 2}
-    Not the extra line between subsections.
+    Note the extra line between subsections.
 
 \section{Formatting}
   \subsection{Lists}
