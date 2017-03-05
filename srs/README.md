@@ -49,15 +49,16 @@ Everything will be written in LaTeX. You will soon come to appreciate this fact.
 
   \subsection{Tables}
     % You should read a guide on this.
-    \begin{table}
-      \centering
-      \caption{Example Survival Setup}\label{table-survival-example}
-      \begin{tabular}{l | lllllc}
-        % $p_i$      & 0    & 1     & 2     & 3     & 4      \\ \hline
-        $P$      & 0    & 25000 & 75000 & 99999 & 123548 & - \\ \hline
-        $F$      & 1.21 & 4.18  & 21.61 & 5.32  & 23.99  & - \\ \hline
-        $C$      & 0    & 1.21  & 5.39  & 27.00 & 32.32  & 56.31
-      \end{tabular}
+    \begin{table}[h!]
+      \caption{Computational Constraints}
+      \label{system-constraints/hardware/computation-table}
+      \begin{tabularx}{\textwidth}{|l|X|}
+        \hline
+        Title       & Computational Constraints. \\ \hline
+        Description & Amount of computation and processing power available to
+                      the application. \\ \hline
+        Priority    & Low: 5. \\ \hline
+      \end{tabularx}
     \end{table}
 
 \end{document}
