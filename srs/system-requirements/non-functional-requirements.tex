@@ -66,9 +66,28 @@
     \begin{tabularx}{\textwidth}{|l|X|}
       \hline
       Title           & Scaleable database. \\ \hline
-      Source Scenario & None. \\ \hline
+      % Source Scenario & None. \\ \hline
       Description     & Database must scale.\\ \hline
       Priority        & Low: 5. \\ \hline
-      Applicable FRs  & None. \\ \hline
+      % Applicable FRs  & None. \\ \hline
+    \end{tabularx}
+  \end{table}
+
+\subsubsection{Fast Search Time}
+  Queries performed via the API and the front-facing web application need to be
+  blazing fast. This non-functional requirement pairs well with the one
+  mentioned in Section \ref{system-requirements/non-functional/friendly-UI}, as
+  an optimistic and reactive UI is also one which is fast.
+
+  \begin{table}[h!]
+    \caption{Fast search}
+    \label{system-requirements/non-functional/fast-search}
+    \begin{tabularx}{\textwidth}{|l|X|}
+      \hline
+      Title           & Fast search. \\ \hline
+      % Source Scenario & None. \\ \hline   % should be added at a later date
+      Description     & Queries and searches should be fast.\\ \hline
+      Priority        & Medium: 3. \\ \hline
+      % Applicable FRs  & None. \\ \hline   % should be added at a later date
     \end{tabularx}
   \end{table}
