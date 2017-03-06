@@ -5,7 +5,8 @@
   \begin{tabularx}{\textwidth}{|l|X|}
     \hline
     Title            & Search Functional Requirements \\ \hline
-    Description      & Database must be able to search through a large data set consisting of                      various file types. \\ \hline
+    Description      & Database must be able to search through a large data set 
+                       consisting of various file types. \\ \hline
     Source Scenario  & FR1. \\ \hline
     Priority         & Necessary: 0. \\ \hline
     Preconditions    & Database must be properly sorted in accordance to the 
@@ -25,16 +26,66 @@
   \begin{tabularx}{\textwidth}{|l|X|}
     \hline
     Title            & File Processing Functional Requirements \\ \hline
-    Description      & Language in which the front-facing web application 
-                       will be written. \\ \hline
-    Source Scenario  & FR1. \\ \hline
+    Description      & Ability to accept unknown file types. \\ \hline
+    Source Scenario  & FR2. \\ \hline
     Priority         & Necessary: 0. \\ \hline
-    Preconditions    & Database must be properly sorted in accordance to the 
-                       pre-existing data structure. Files must be properly
-                       tagged to match their specified collection and search
-                       information. \\ \hline
-    Postconditions   & Application will search through database using array of
-                       parameters and will return all relevant files. \\ \hline
+    Preconditions    & None. \\ \hline
+    Postconditions   & Application will be able to search for and display
+                       information on a file regardless of the filetype. \\ \hline
+    Use Case Diagram & #### \\ \hline
+  \end{tabularx}
+\end{table}
+
+\label{UI Requirements}
+\begin{table}[h!]
+  \caption{Graphical UI Requirement}
+  \label{system-requirements/functional-requirements}
+  \begin{tabularx}{\textwidth}{|l|X|}
+    \hline
+    Title            & Graphical UI Functional Requirement \\ \hline
+    Description      & Application must use a graphical UI for searching and 
+                       displaying files. \\ \hline
+    Source Scenario  & FR3. \\ \hline
+    Priority         & Necessary: 0. \\ \hline
+    Preconditions    & Working back-end search functionality. \\ \hline
+    Postconditions   & Application will be able to navigate through the database
+                       displaying search results, file information, etc. \\ \hline
+    Use Case Diagram & #### \\ \hline
+  \end{tabularx}
+\end{table}
+
+\begin{table}[h!]
+  \caption{File Interaction Requirement}
+  \label{system-requirements/functional-requirements}
+  \begin{tabularx}{\textwidth}{|l|X|}
+    \hline
+    Title            & Graphical UI Interaction Requirement \\ \hline
+    Description      & Application must be able to view details about and
+                       download collections and files. \\ \hline
+    Source Scenario  & FR4. \\ \hline
+    Priority         & Necessary: 0. \\ \hline
+    Preconditions    & Working back-end search functionality, Graphical UI. \\ \hline
+    Postconditions   & Application will be able to navigate through the database
+                       displaying search results, file information, and be able to 
+                       interact with and download the displayed files and 
+                       collections. \\ \hline
+    Use Case Diagram & #### \\ \hline
+  \end{tabularx}
+\end{table}
+
+\label{API Requirements}
+\begin{table}[h!]
+  \caption{API Requirement}
+  \label{system-requirements/functional-requirements}
+  \begin{tabularx}{\textwidth}{|l|X|}
+    \hline
+    Title            & API Requirement \\ \hline
+    Description      & Application must have an API. \\ \hline
+    Source Scenario  & FR5. \\ \hline
+    Priority         & Necessary: 0. \\ \hline
+    Preconditions    & Application functions. \\ \hline
+    Postconditions   & Seperate applciation functions will be able to work 
+                       together elegantly and cleanly. \\ \hline
     Use Case Diagram & #### \\ \hline
   \end{tabularx}
 \end{table}
