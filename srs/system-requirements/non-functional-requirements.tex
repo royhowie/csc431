@@ -1,1 +1,74 @@
-% content here
+\subsubsection{User-friendly Interface}
+  \label{system-requirements/non-functional/friendly-UI}
+  The front-facing web application should have a user-friendly interface. It
+  should be simple, easy to use, ergonomic, and so on. Users should be able to
+  focus on working---not fiddling with the UI---while searching and querying the
+  database.
+
+  \begin{table}[h!]
+    \caption{User-friendly Interface}
+    \label{system-requirements/non-functional/friendly-UI-table}
+    \begin{tabularx}{\textwidth}{|l|X|}
+      \hline
+      Title           & User-friendly User Interface. \\ \hline
+      Source Scenario & None. \\ \hline
+      Description     & User interface should be easy to use.\\ \hline
+      Priority        & Medium: 3. \\ \hline
+      Applicable FRs  & None. \\ \hline
+    \end{tabularx}
+  \end{table}
+
+  UI should ideally be \textit{optimistic} and \textit{reactive}. Optimistic
+  refers to performing changes locally---that is, assuming a permissible action
+  was performed---before notifying the server. If the action should not have
+  happened, it should be rolled back. Reactive refers to how the interface is
+  built, i.e. in the style of React.js.
+
+  This should not be difficult to accomplish, as Meteor and React.js easily
+  allow for an optimistic and a reactive UI, respectively.
+
+  \textbf{Relevant Links:}
+  \begin{itemize}
+    \item \url{https://www.meteor.com}
+    \item \url{https://facebook.github.io/react/}
+  \end{itemize}
+
+  \begin{table}[h!]
+    \caption{Optimistic User Interface}
+    \label{system-requirements/non-functional/optimistic-UI-table}
+    \begin{tabularx}{\textwidth}{|l|X|}
+      \hline
+      Title           & Optimistic User Interface. \\ \hline
+      Description     & User interface should be optimistic.\\ \hline
+      Priority        & Necessary: 0. \\ \hline
+    \end{tabularx}
+  \end{table}
+
+  \begin{table}[h!]
+    \caption{Reactive User Interface}
+    \label{system-requirements/non-functional/reactive-UI-table}
+    \begin{tabularx}{\textwidth}{|l|X|}
+      \hline
+      Title           & Reactive User Interface. \\ \hline
+      Description     & User interface should be reactive.\\ \hline
+      Priority        & Necessary: 0. \\ \hline
+    \end{tabularx}
+  \end{table}
+
+\subsubsection{Scaleable database}
+  Database must be scaleable. As mentioned in Section
+  \ref{system-constraints/langauge/database}, MongoDB will be the database of
+  choice. Fortunately, MongoDB is built to scale, so no work needs to be done.
+
+  \begin{table}[h!]
+    \caption{Scaleable database}
+    \label{system-requirements/non-functional/scaleable-database-table}
+    \begin{tabularx}{\textwidth}{|l|X|}
+      \hline
+      Title           & Scaleable database. \\ \hline
+      Source Scenario & None. \\ \hline
+      Description     & Database must scale.\\ \hline
+      Priority        & Low: 5. \\ \hline
+      Applicable FRs  & None. \\ \hline
+    \end{tabularx}
+  \end{table}
