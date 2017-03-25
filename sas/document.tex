@@ -1,0 +1,55 @@
+\documentclass{article}
+
+% Packages go here.
+\usepackage{caption}
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{newclude}
+\usepackage{parskip}
+\usepackage[group-separator={,}]{siunitx}
+\usepackage{tabularx}
+\usepackage{titling}
+
+% Macros, new commands, etc. go here.
+\captionsetup[table]{skip=4pt}
+\renewcommand\labelitemi{$\star$}
+
+\begin{document}
+
+\title{Image Management Service}
+% \subtitle{Software Requirements Specification}
+\author{
+       Bohorquez, Juan
+  \and Bohorquez, Tomas
+  \and Buch, Camila
+  \and Chen, Davis
+  \and Garcia, Kevin
+  \and Howie, Roy
+  \and Luu, Steven
+  \and Smelser, William
+  \and Vonk, Kelsey
+}
+\date{}
+\maketitle
+
+\clearpage
+  \tableofcontents
+
+\clearpage
+  \listoffigures
+  \listoftables
+
+\clearpage
+\section{System Analysis}
+  \include*{system-analysis/main}
+
+\clearpage
+\section{Functional Design}
+  \include*{functional-design/main}
+
+\clearpage
+\section{Structural Design}
+  \include*{structural-design/main}
+
+\end{document}
