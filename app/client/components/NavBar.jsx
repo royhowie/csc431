@@ -1,5 +1,5 @@
 import { Component } from 'react'
-import NavLink from './NavLink.jsx'
+import { Link } from 'react-router-dom'
 
 export default class NavBar extends Component {
   render () {
@@ -18,17 +18,18 @@ export default class NavBar extends Component {
             <span className='icon-bar'></span>
             <span className='icon-bar'></span>
           </button>
-          <NavLink className='navbar-brand' to='/'>
-            Image Management
-          </NavLink>
+          <Link className='navbar-brand' to='/'>
+            Image Management Service
+          </Link>
         </div>
         <div className='collapse navbar-collapse' id='navbar-collapse'>
           <ul className='nav navbar-nav'>
-            <li><NavLink to='/home'>Home</NavLink></li>
-            <li><NavLink to='/about'>About</NavLink></li>
+            <li><Link to='/about'>About</Link></li>
+            <li><Link to='/gallery'>pictures</Link></li>
+            <li><Link to='/1234567890'>404 mistake</Link></li>
           </ul>
           <ul className='nav navbar-nav navbar-right'>
-            <li><NavLink to='/login'>Login</NavLink></li>
+            <li><Link to='/login'>Login</Link></li>
           </ul>
         </div>
       </nav>
