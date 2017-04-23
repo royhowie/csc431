@@ -8,7 +8,6 @@ export const Galleries = new Mongo.Collection('galleries')
 if (Meteor.isServer) {
   // Ensure we can search galleries by text
   Galleries._ensureIndex({
-    name: 'text',
     description: 'text',
   })
 
@@ -21,8 +20,13 @@ if (Meteor.isServer) {
       return Galleries.find({})
     }
     return Galleries.find(
-      { $text: { $search: val } },
-      { sort: { date: 1 } }
+      {
+        $text: { $search: val },
+      },
+      {
+        fields: { score: { $meta: 'textScore' } },
+        sort: { score: { $meta: 'textScore' } },
+      }
     )
   })
 

@@ -19,7 +19,6 @@ class QueryResults extends Component {
     return (
       <div>
         <h1>Query Results</h1>
-        <p>{this.props.query}</p>
         <div className='row'>
           {this.renderGalleryThumbnails()}
         </div>
