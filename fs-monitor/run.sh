@@ -18,4 +18,4 @@ fi
 
 WATCH_PATH=`realpath $1`
 echo "Now watching $WATCH_PATH"
-fswatch -0 -xr $1 | xargs -0 -n 1 -I {} bash -c "node run.js $WATCH_PATH {}"
+fswatch -0 -xnr $1 | xargs -0 -n 1 -I {} bash -c "node run.js $WATCH_PATH {}"

@@ -1,0 +1,17 @@
+module.exports = {
+  NoOp: 0,
+  PlatformSpecific: 1,
+  Created: 2,
+  Updated: 4,
+  Removed: 8,
+  Renamed: 16,
+  OwnerModified: 32,
+  AttributeModified: 64,
+  MovedFrom: 128,
+  MovedTo: 256,
+  IsFile: 512,
+  IsDir: 1024,
+  IsSymLink: 2048,
+  Link: 4096,
+  Overflow: 8192,
+}

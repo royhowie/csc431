@@ -1,0 +1,12 @@
+{
+  "name": "fs-monitor",
+  "version": "1.0.0",
+  "description": "",
+  "main": "run.js",
+  "author": "royhowie",
+  "dependencies": {
+    "fs.promised": "^3.0.0",
+    "meteor-random": "0.0.3",
+    "mongodb": "^2.2.26"
+  }
+}
