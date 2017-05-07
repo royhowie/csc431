@@ -7,18 +7,12 @@ export default class GalleryThumbnail extends Component {
     return this.props.gallery.getLink()
   }
 
-  getThumbnailLink () {
-    return this.props.gallery.getThumbnailLink()
-  }
-
   render () {
     return (
-      <div className='col-sm-6 col-md-4'>
+      <div className='col-sm-3 col-md-3 text-center'>
         <Link to={this.getGalleryLink()} className='thumbnail'>
-          <img src={this.getThumbnailLink()}/>
-          <div className='caption'>
-            <h3 className='text-center'>{this.props.gallery.description}</h3>
-          </div>
+          <span className='glyphicon glyphicon-folder-open' aria-hidden='true'/>
+          <h3>{this.props.gallery.name}</h3>
         </Link>
       </div>
     )

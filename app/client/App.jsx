@@ -20,7 +20,7 @@ const App = () => (
       <div className='container'>
         <Switch>
           <Route path='/' exact component={Query}/>
-          <Route path='/gallery' exact component={PictureLayout}/>
+          <Route path='/galleries' component={PictureLayout}/>
           <Route path='/gallery/:id' component={Gallery}/>
           <Route path='/about' exact component={About}/>
           <Route component={NotFound}/>

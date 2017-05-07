@@ -16,17 +16,13 @@ Images.schema = new SimpleSchema({
     label: 'Id',
     regEx: SimpleSchema.RegEx.Id,
   },
-  date: {
-    type: Date,
-    label: 'Date',
-  },
-  description: {
-    type: String,
-    label: 'Description',
-  },
   path: {
     type: String,
     label: 'Filepath'
+  },
+  inode: {
+    type: Number,
+    label: 'Inode of file header',
   },
   gallery: {
     type: String,

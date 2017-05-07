@@ -7,9 +7,7 @@ export const Galleries = new Mongo.Collection('galleries')
 
 if (Meteor.isServer) {
   // Ensure we can search galleries by text
-  Galleries._ensureIndex({
-    description: 'text',
-  })
+  Galleries._ensureIndex({ name: 'text' })
 
   Meteor.publish('galleries', function galleriesPublication () {
     return Galleries.find({})
@@ -30,9 +28,9 @@ if (Meteor.isServer) {
     )
   })
 
-  Meteor.publish('single-gallery', function (_id) {
-    check(_id, String)
-    const data = Galleries.find({ _id })
+  Meteor.publish('single-gallery', function (id) {
+    check(id, String)
+    const data = Galleries.find({ id })
     if (data)
       return data
     this.ready()
@@ -45,6 +43,11 @@ Galleries.schema = new SimpleSchema({
     label: 'Id',
     regEx: SimpleSchema.RegEx.Id,
   },
+  location: {
+    type: String,
+    label: 'Gallery location on disc',
+    regEx: SimpleSchema.RegEx.Id,
+  },
   name: {
     type: String,
     label: 'Name',
@@ -53,24 +56,12 @@ Galleries.schema = new SimpleSchema({
     type: Date,
     label: 'Date',
   },
-  description: {
-    type: String,
-    label: 'Description',
-  },
-  thumbnail: {
-    type: String,
-    label: 'The picture intended to represent the gallery',
-    // regEx: SimpleSchema.RegEx.Id,
-  },
 })
 
 Galleries.attachSchema(Galleries.schema)
 
 Galleries.helpers({
   getLink () {
-    return '/gallery/' + this._id
-  },
-  getThumbnailLink () {
-    return '/img/' + this.thumbnail
+    return '/gallery/' + this.id
   },
 })
