@@ -1,3 +1,3 @@
 module.exports = {
-  url: 'mongodb://127.0.0.1:3001/meteor',
+  url: 'mongodb://localhost:27017/meteor',
 }

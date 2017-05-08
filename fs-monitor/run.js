@@ -73,6 +73,9 @@ const C = require('./constants.js')
   // Throw an error if fswatch experienced an overflow error.
   } else if (flags & C.Overflow) {
     return Promise.reject('Overflow error! Check standard error.')
+  // No need to keep track of .DS_Store files.
+  } else if (path.indexOf('.DS_Store') !== -1) {
+    return Promise.resolve()
   }
 
   // Event fired for a directory. Recursively update files.
@@ -94,7 +97,7 @@ const C = require('./constants.js')
     }
   }
 })(...args.slice(0,2), parseInt(args[2]))
-// Catch any potential errors
+// Catch any potential errors.
 .catch(err => console.log(err))
 // Close the database connection, if one was made.
 .then(() => helpers.DATABASE && helpers.DATABASE.close())
