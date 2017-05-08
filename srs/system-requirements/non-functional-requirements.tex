@@ -91,3 +91,40 @@
       % Applicable FRs  & None. \\ \hline   % should be added at a later date
     \end{tabularx}
   \end{table}
+
+\subsubsection{System Downtime}
+  System Downtime should only happen during major updates and should take
+ no more than 1 day to complete.
+
+  \begin{table}[h!]
+    \caption{System Downtime}
+    \label{system-requirements/non-functional/system-downtime}
+    \begin{tabularx}{\textwidth}{|l|X|}
+      \hline
+      Title           & System Downtime. \\ \hline
+      % Source Scenario & None. \\ \hline   % should be added at a later date
+      Description     & The only downtime that should be experienced would be
+			 due to updating the software.\\ \hline
+      Priority        & Medium: 3. \\ \hline
+      % Applicable FRs  & None. \\ \hline   % should be added at a later date
+    \end{tabularx}
+  \end{table}
+
+\subsubsection{Real Time Updates}
+  Anytime the database is changed, the application must automatically
+  account for the change in real time.
+
+
+  \begin{table}[h!]
+    \caption{Real Time Updates}
+    \label{system-requirements/non-functional/real-time-updates}
+    \begin{tabularx}{\textwidth}{|l|X|}
+      \hline
+      Title           & Real Time Updates. \\ \hline
+      % Source Scenario & None. \\ \hline   % should be added at a later date
+      Description     & Any uploaded images should be automatically added to
+			 the database and can be queried in real time by any user.\\ \hline
+      Priority        & High: 4. \\ \hline
+      % Applicable FRs  & None. \\ \hline   % should be added at a later date
+    \end{tabularx}
+  \end{table}

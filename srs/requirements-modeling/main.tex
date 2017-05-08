@@ -5,3 +5,85 @@
     \includegraphics[width=\textwidth]{images/CSC431-UseCase.png}
   \end{center}
 \end{figure}
+
+\newpage
+
+\subsection{Search Photos}
+  \begin{table}[h!]
+    % \label{system-constraints/network/access-data-offline}
+    \begin{tabularx}{\textwidth}{|l|X|}
+      \hline
+      Title       & Search Photos in the System \\ \hline
+      Description & Query server for photos matching certain criteria\\ \hline
+      Actors & The user and the image server\\ \hline
+      Trigger & Server is searched and images matching criteria are returned\\ \hline
+      Pre Condition & Query fields are filled in\\ \hline
+      Post Condition & Images matching criteria are displayed\\ \hline
+      Basic Flow & User fills in query fields, query criteria are sent to the server,
+ 			server is searched using criteria, images matching criteria are returned,
+			returned images are displayed\\ \hline
+      Exceptions    &   N/A. \\ \hline
+    \end{tabularx}
+  \end{table}
+
+\begin{figure}[h!]
+  \begin{center}
+    \caption{Search Photos Use Case}
+    \label{}
+    \includegraphics[width=\textwidth]{images/SearchPhotosUC.jpg}
+  \end{center}
+\end{figure}
+
+\newpage
+
+\subsection{Download Files}
+  \begin{table}[h!]
+    % \label{system-constraints/network/access-data-offline}
+    \begin{tabularx}{\textwidth}{|l|X|}
+      \hline
+      Title       & Download Files in the System \\ \hline
+      Description & Download selected galleries or images\\ \hline
+      Actors & The user and the image server\\ \hline
+      Trigger & Download button is pressed and selection is downloaded\\ \hline
+      Pre Condition & Pictures or Galleries are found and selected\\ \hline
+      Post Condition & A file is downloaded into the user’s computer\\ \hline
+      Basic Flow & Users select Galleries or pictures -> Users click download -> file is downloaded.  \\ \hline
+      Exceptions    &   Files don't exist. \\ \hline
+    \end{tabularx}
+  \end{table}
+
+\begin{figure}[h!]
+  \begin{center}
+    \caption{Download Files Use Case}
+    \label{}
+    \includegraphics[width=\textwidth]{images/DownloadFilesUC.jpg}
+  \end{center}
+\end{figure}
+
+\newpage
+
+\subsection{View Photos}
+  \begin{table}[h!]
+    % \label{system-constraints/network/access-data-offline}
+    \begin{tabularx}{\textwidth}{|l|X|}
+      \hline
+      Title       & View Photos in the System \\ \hline
+      Description & View Photo returned from query\\ \hline
+      Actors & The user\\ \hline
+      Trigger & Displays in real-time as user types into the search fields.\\ \hline
+      Pre Condition & Search fields contain input.\\ \hline
+      Post Condition & Opens path to photo.\\ \hline
+      Basic Flow & User clicks, returns path to photo to open it.  \\ \hline
+      Exceptions    &   No matching photos are returned from search. \\ \hline
+    \end{tabularx}
+  \end{table}
+
+\begin{figure}[h!]
+  \begin{center}
+    \caption{View Photos Use Case}
+    \label{}
+    \includegraphics[width=400px]{images/ViewPhotosUC.jpg}
+  \end{center}
+\end{figure}
+
+\newpage
