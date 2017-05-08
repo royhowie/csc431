@@ -13,19 +13,18 @@ if (Meteor.isServer) {
     return Galleries.find({})
   })
 
-  Meteor.publish('search-galleries', function searchGalleries (val) {
-    if (!val) {
-      return Galleries.find({})
+  Meteor.publish('search-galleries', function searchGalleries (start, end) {
+    if (!start && !end) {
+      this.ready()
+      return []
     }
-    return Galleries.find(
-      {
-        $text: { $search: val },
-      },
-      {
-        fields: { score: { $meta: 'textScore' } },
-        sort: { score: { $meta: 'textScore' } },
-      }
-    )
+
+    return Galleries.find({
+      date: {
+        $gte: start || new Date(0, 0, 0),
+        $lte: end || new Date()
+       }
+    })
   })
 
   Meteor.publish('single-gallery', function (id) {

@@ -2,11 +2,19 @@ import { Meteor } from 'meteor/meteor'
 import { Mongo } from 'meteor/mongo'
 import { SimpleSchema } from 'meteor/aldeed:simple-schema'
 import { check } from 'meteor/check'
+import { Galleries } from './galleries.js'
 
 export const Images = new Mongo.Collection('images')
 
-function search ($search=null, beginsWith=null) {
+function search ($search, beginsWith=null, start=null, end=null) {
   const pipeline = []
+
+  // -1. If start or end dates are included, search based on them first, as
+  // number searches are faster than text searches.
+  if (start || end) {
+    // TODO: Figure out how to filter based on dates. Would probably need to
+    // find galleries and filter based on `gallery.id`.
+  }
 
   // 0. [optional] Filter images based on a text-based search for $search`.
   if ($search) {
@@ -105,8 +113,28 @@ if (Meteor.isServer) {
     this.ready()
   })
 
-  Meteor.publish('search-images', function (val, beginsWith=null) {
-    ReactiveAggregate(this, Images, search(val, beginsWith))
+  Meteor.publish('search-images-aggregate', function (options) {
+    let { query, beginsWith, start, end } = options
+    ReactiveAggregate(this, Images, search(query, beginsWith, start, end))
+  })
+
+  Meteor.publish('search-images-general', function (options) {
+    const { query } = options
+
+    if (!query) {
+      return Images.find({}, { $sort: { path: 1 } })
+    }
+
+    return Images.find(
+      { $text: { $search: query } },
+      {
+        fields: { score: { $meta: 'textScore' } },
+        sort: {
+          score: { $meta: 'textScore' },
+          path: 1,
+        },
+      }
+    )
   })
 }
 

@@ -9,19 +9,32 @@ import { Images } from '../../api/images.js'
 import queryString from 'query-string'
 
 class QueryResults extends Component {
-  renderRows () {
+  renderRows (is_tree) {
+    if (is_tree) {
+      return this.props.images.map((row, i) => {
+        return (
+          <tr key={i} onClick={this.props.onClick(row, is_tree)}>
+            <td>{i+1}</td>
+            <td>
+              {
+                row.is_dir ?
+                  <span className='glyphicon glyphicon-folder-open'/>
+                  : <span className='glyphicon glyphicon-file'/>
+              }
+            </td>
+            <td>{row._id}</td>
+          </tr>
+        )
+      })
+    }
     return this.props.images.map((row, i) => {
       return (
-        <tr key={i} onClick={this.props.onClick(row)}>
+        <tr key={i} onClick={this.props.onClick(row, is_tree)}>
           <td>{i+1}</td>
           <td>
-            {
-              row.is_dir ?
-                <span className='glyphicon glyphicon-folder-open'/>
-                : <span className='glyphicon glyphicon-file'/>
-            }
+            <span className='glyphicon glyphicon-file'/>
           </td>
-          <td className='file-name'>{row._id}</td>
+          <td>{row.path}</td>
         </tr>
       )
     })
@@ -44,9 +57,10 @@ class QueryResults extends Component {
     return (
       <div>
         <h1>Query Results</h1>
-        <p>
-          Context: <code>{this.props.beginsWith}</code>
-        </p>
+        {
+          this.props.tree &&
+          <p>Context: <code>{this.props.beginsWith}</code></p>
+        }
         <table className='table'>
           <thead>
             <tr>
@@ -56,7 +70,7 @@ class QueryResults extends Component {
             </tr>
           </thead>
           <tbody>
-            {this.renderRows()}
+            {this.renderRows(this.props.tree)}
           </tbody>
         </table>
       </div>
@@ -67,18 +81,41 @@ class QueryResults extends Component {
 QueryResults.propTypes = {
   beginsWith: PropTypes.string,
   end: PropTypes.instanceOf(Date),
+  galleries: PropTypes.array,
   images: PropTypes.array.isRequired,
   onClick: PropTypes.func,
   query: PropTypes.string,
   ready: PropTypes.bool,
   start: PropTypes.instanceOf(Date),
+  tree: PropTypes.bool.isRequired,
 }
 
-
 export default createContainer((props) => {
-  let handle = Meteor.subscribe('search-images', props.query, props.beginsWith)
-  return {
-    images: Images.find({}).fetch(),
-    ready: handle.ready(),
+  // If tree view, use the aggregate search.
+  if (props.tree) {
+    let handle = Meteor.subscribe('search-images-aggregate', {
+      query: props.query,
+      beginsWith: props.beginsWith,
+      start: props.start,
+      end: props.end,
+    })
+    return {
+      images: Images.find({}).fetch(),
+      ready: handle.ready(),
+    }
+  // Otherwise, just display all relevent images.
+  } else {
+    let handle = Meteor.subscribe('search-images-general', {
+      query: props.query,
+      beginsWith: props.beginsWith,
+      start: props.start,
+      end: props.end,
+    })
+    let gallery_handle = Meteor.subscribe('search-galleries', props.start, props.end)
+    return {
+      galleries: Galleries.find({}).fetch(),
+      images: Images.find({}).fetch(),
+      ready: handle.ready() && gallery_handle.ready(),
+    }
   }
 }, QueryResults)

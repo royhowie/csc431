@@ -15,6 +15,7 @@ class Query extends Component {
       start: null,
       end: null,
       timeout: null,
+      treeView: false,
     }
 
     this.props.history.listen((location, action) => {
@@ -35,29 +36,46 @@ class Query extends Component {
   }
 
   componentDidMount () {
-    $('#date-picker-start').datepicker()
-    $('#date-picker-end').datepicker()
+    $('#date-picker-start').datepicker({ clearBtn: true })
+    $('#date-picker-end').datepicker({ clearBtn: true })
 
     let params = queryString.parse(this.props.location.search)
     this.setTextBox(params, 'query', $('#queryInput'))
     this.setTextBox(params, 'start', $('#date-picker-start'), Date)
     this.setTextBox(params, 'end', $('#date-picker-end'), Date)
     this.setState({ beginsWith: params.beginsWith })
+
+    if (params.tree && params.tree == 'true') {
+      this.setState({ treeView: true })
+      this.updateURL()
+    }
+
+    $('#date-picker-start').change(this.processQuery.bind(this))
+    $('#date-picker-end').change(this.processQuery.bind(this))
   }
 
-  handleClick (child) {
-    // If the child is a file, transition to the file-viewer component.
-    if (!child.is_dir) {
-      return () => {
-        this.props.history.push(`/file/${child.inode}`)
-        console.log('FILE:', child)
-      }
+  handleClick (child, is_tree) {
+    // If not in tree view, every result should transition to <FileViewer/>.
+    if (!is_tree) {
+      return () => this.props.history.push(`/file/${child.inode}`)
     }
+    // If the child is a file, transition to the file-viewer component.
+    else if (!child.is_dir) {
+      return () => this.props.history.push(`/file/${child.inode}`)
+    }
+
+    // Otherwise, change the context of the tree.
     return () => {
+      // Add the directory to the path
       this.state.path.push(child._id)
 
+      // Regenerate the beginsWith parameter.
       const beginsWith = this.state.path.join('/') + '/'
+
+      // Change the state so it propagates to <QueryResults/>.
       this.setState({ beginsWith })
+
+      // Create a new set of URL parameters and update the URL accordingly.
       let params = {
         ...queryString.parse(this.props.location.search),
         beginsWith
@@ -70,25 +88,40 @@ class Query extends Component {
     event.preventDefault()
     clearTimeout(this.state.timeout)
 
-    const timeout = setTimeout(() => {
-      const query = $('#queryInput').val()
-      const start = $('#date-picker-start').datepicker('getDate')
-      const end = $('#date-picker-end').datepicker('getDate')
-      const format = 'MM-DD-YYYY'
-
-      let params = { ...queryString.parse(this.props.location.search), query }
-
-      if (start) {
-        params.start = moment(start).format(format)
-      }
-      if (end) {
-        params.end = moment(end).format(format)
-      }
-      this.props.history.push(`/?${queryString.stringify(params)}`)
-      this.setState({ query, start, end })
-    }, 500)
+    const timeout = setTimeout(() => this.updateURL(), 500)
 
     this.setState({ timeout })
+  }
+
+  toggleTreeView () {
+    this.setState({ treeView: !this.state.treeView })
+    this.updateURL()
+  }
+
+  updateURL () {
+    const query = $('#queryInput').val()
+    const start = $('#date-picker-start').datepicker('getDate')
+    const end = $('#date-picker-end').datepicker('getDate')
+    const format = 'MM-DD-YYYY'
+
+    let params = {
+      ...queryString.parse(this.props.location.search),
+      query,
+      tree: (!this.state.treeView).toString(),
+    }
+
+    if (start) {
+      params.start = moment(start).format(format)
+    } else {
+      delete params.start
+    }
+    if (end) {
+      params.end = moment(end).format(format)
+    } else {
+      delete params.end
+    }
+    this.props.history.push(`/?${queryString.stringify(params)}`)
+    this.setState({ query, start, end })
   }
 
   render () {
@@ -98,7 +131,6 @@ class Query extends Component {
           <h1>Query</h1>
           <form onSubmit={this.processQuery.bind(this)}>
             <div className='form-group'>
-              {/* <label htmlFor='queryInput'>query</label> */}
               <input
                 type='text'
                 className='form-control'
@@ -122,6 +154,24 @@ class Query extends Component {
                 placeholder='end date'
                 onChange={this.processQuery.bind(this)}
               />
+              <div className='input-group' id='tree-view-group'>
+                <span className='input-group-addon'>
+                  <input
+                    type='checkbox'
+                    id='tree-view'
+                    readOnly
+                    checked={this.state.treeView}
+                    onClick={this.toggleTreeView.bind(this)}
+                  />
+                </span>
+                <input
+                  type='text'
+                  className='form-control'
+                  readOnly
+                  defaultValue='tree view'
+                  onClick={this.toggleTreeView.bind(this)}
+                />
+              </div>
             </div>
           </form>
         </div>
@@ -132,6 +182,7 @@ class Query extends Component {
             end={this.state.end}
             onClick={this.handleClick.bind(this)}
             beginsWith={this.state.beginsWith}
+            tree={this.state.treeView}
           />
         </div>
       </div>

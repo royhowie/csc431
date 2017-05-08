@@ -9,7 +9,12 @@ class FileViewer extends Component {
       return <Loading status={this.props.loading}/>
     }
     return (
-      <p>{JSON.stringify(this.props.image)}</p>
+      <div>
+        <h1>
+          <code>{this.props.image.path}</code>
+        </h1>
+        <img src={`/img${this.props.image.path}`}></img>
+      </div>
     )
   }
 }
