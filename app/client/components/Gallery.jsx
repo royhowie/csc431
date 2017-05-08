@@ -43,22 +43,8 @@ class Gallery extends Component {
     if (!gallery)
       return <Loading status={this.props.loading}/>
 
-    // let defaultMap = (_, key) => _[key]
-    // let details = [
-    //   { key: 'name' },
-    //   { key: 'date', fn: _ => moment(_.date).format('MMM Do, YYYY') },
-    //   { key: 'description' },
-    //   { key: 'thumbnail' },
-    // ].map(({key, fn=defaultMap}) => {
-    //   return (
-    //     <li key={key} className='list-group-item'>
-    //       <span className='badge'>{key}</span>
-    //       {fn(gallery, key)}
-    //     </li>
-    //   )
-    // })
-    console.log(this.props.gallery)
     return <p>{this.props.gallery.name}</p>
+
     return (
       <div className='row container-fluid'>
         <div className='col-lg-8 col-md-12 col-sm-12 col-xs-12'>

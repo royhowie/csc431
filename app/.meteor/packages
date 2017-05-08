@@ -28,3 +28,5 @@ aldeed:collection2-core
 dburles:collection-helpers
 momentjs:moment
 rajit:bootstrap3-datepicker
+meteorhacks:aggregate
+jcbernack:reactive-aggregate

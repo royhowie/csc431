@@ -23,7 +23,7 @@ export default class NavBar extends Component {
             Image Management Service
           </Link>
         </div>
-        <div className='collapse navbar-collapse' id='navbar-collapse'>
+        <div className='collapse navbar-collapse pull-right' id='navbar-collapse'>
           <ul className='nav navbar-nav'>
             <li><Link to='/about'>About</Link></li>
             <li><Link to='/galleries'>Galleries</Link></li>

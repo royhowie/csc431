@@ -8,6 +8,7 @@ import {
 
 import About from './components/About.jsx'
 import Gallery from './components/Gallery.jsx'
+import FileViewer from './components/FileViewer.jsx'
 import NotFound from './components/NotFound.jsx'
 import NavBar from './components/NavBar.jsx'
 import PictureLayout from './components/PictureLayout.jsx'
@@ -19,10 +20,11 @@ const App = () => (
       <NavBar/>
       <div className='container'>
         <Switch>
-          <Route path='/' exact component={Query}/>
           <Route path='/galleries' component={PictureLayout}/>
           <Route path='/gallery/:id' component={Gallery}/>
+          <Route path='/file/:inode' component={FileViewer}/>
           <Route path='/about' exact component={About}/>
+          <Route path='/' component={Query}/>
           <Route component={NotFound}/>
         </Switch>
       </div>
