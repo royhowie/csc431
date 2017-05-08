@@ -13,7 +13,7 @@ class FileViewer extends Component {
         <h1>
           <code>{this.props.image.path}</code>
         </h1>
-        <img src={`/img${this.props.image.path}`}></img>
+        <img src={`/img/watch-this${this.props.image.path}`}></img>
       </div>
     )
   }
